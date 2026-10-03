@@ -61,8 +61,8 @@ Open the shop from the top of the menu, or press `B` during a run. Time pauses w
 ## WHAT'S INSIDE
 
 - A compact 3D arena with solid walls and obstacles
-- Zombies that pursue the player and crowd around cover
-- Four unlockable weapons with distinct firing and reload behavior
+- Zombies that pursue the player with crowd separation
+- Four distinct weapons, with three to unlock and distinct firing and reload behavior
 - Persistent kill credits and weapon unlocks in local storage
 - Generated Web Audio effects; no sound assets to download
 - Responsive menus, HUD, pause screen, armory, and end-of-run results
