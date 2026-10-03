@@ -1,80 +1,137 @@
-# DEADLINE
+# 🔥 DEADLINE
 
-### **60 SECONDS. ONE YARD. NO SECOND CHANCES.**
+### **LAST 60 SECONDS — SURVIVE THE HORDE**
 
-A fast-paced first-person 3D survival shooter built for the browser with **Three.js**.
+<p align="center">
+  <a href="https://aaravpy.github.io/Deadline/">
+    <strong>🎮 PLAY THE GAME</strong>
+  </a>
+  &nbsp; • &nbsp;
+  <a href="https://github.com/AaravPy/Deadline">
+    <strong>💻 VIEW SOURCE</strong>
+  </a>
+</p>
 
-> Survive the full minute. Fight the horde. Earn kills. Unlock weapons. Don't miss.
-
----
-
-## 🎮 Game
-
-**Deadline** drops you into a compact 3D arena with one objective:
-
-# SURVIVE FOR 60 SECONDS.
-
-Zombies will constantly close in on your position. Move, aim, shoot, reload, sprint, and manage your health while trying to survive the entire countdown.
-
-Every kill helps you progress toward better weapons.
+<p align="center">
+  <strong>60 SECONDS.</strong> ONE YARD. NO SECOND CHANCES.
+</p>
 
 ---
 
-## ✨ Features
+## 🎮 What is DEADLINE?
 
-- 🔫 First-person 3D shooting
-- 🧟 Zombie enemies with pursuit and crowd separation
-- ⏱️ 60-second survival objective
-- 💥 Four unlockable weapons
-- 🏃 Sprinting and movement
-- 🖱️ Mouse look and pointer lock
-- 🎯 Kill-based weapon progression
-- 💾 Persistent progress using browser Local Storage
-- 🔊 Procedurally generated sound using Web Audio API
-- ⏸️ Pause menu and armory
-- ❤️ Health and ammunition systems
-- 🏆 Results screen after each run
-- 📱 Responsive menus and HUD
-- ⚡ No build system or npm installation required
+**Deadline** is a browser-based first-person survival shooter built with **JavaScript and Three.js**.
+
+You have **60 seconds**.
+
+A horde of zombies is coming.
+
+Fight your way through the yard, rack up kills, unlock better weapons, and survive until the clock hits zero.
+
+> **How long can you survive?**
+
+### ▶️ [PLAY LAST 60 SECONDS — Survive the horde](https://aaravpy.github.io/Deadline/)
 
 ---
 
-## 🔄 Gameplay Loop
+## ⚡ FEATURES
+
+| | Feature |
+|---|---|
+| 🎯 | First-person 3D gameplay |
+| 🧟 | Dynamic zombie hordes |
+| 🔫 | 4 unlockable weapons |
+| ⏱️ | 60-second survival runs |
+| 💀 | Kill-based progression |
+| 🏃 | Sprinting & movement |
+| 🖱️ | Mouse aiming & pointer lock |
+| 💾 | Persistent local progression |
+| 🔊 | Procedural Web Audio |
+| ⏸️ | Pause system & armory |
+| ❤️ | Health & ammunition |
+| 🏆 | End-of-run results |
+
+---
+
+# 🔫 THE ARSENAL
+
+Every kill brings you closer to a better weapon.
+
+| Weapon | Cost | Magazine | Style |
+|---|---:|---:|---|
+| 🔫 **Yard Sidearm** | Free | 12 | Reliable |
+| ⚡ **Compact SMG** | 4 kills | 30 | Fast & aggressive |
+| 💥 **Pump Shotgun** | 7 kills | 6 | Heavy close-range damage |
+| 🎯 **Yard Carbine** | 12 kills | 24 | Accurate & powerful |
+
+**Start with the Sidearm. Earn kills. Unlock the arsenal.**
+
+---
+
+# 🧟 THE HORDE
+
+The zombies aren't just static targets.
+
+They dynamically:
+
+- Chase the player
+- Move through the arena
+- Separate from nearby enemies
+- Form crowds
+- Pressure the player from multiple directions
+
+Keep moving.
+
+Keep shooting.
+
+Don't get surrounded.
+
+---
+
+# 🎮 CONTROLS
+
+| Action | Control |
+|---|---|
+| Move | `W A S D` / Arrow Keys |
+| Aim | Mouse |
+| Shoot | Left Click |
+| Reload | `R` |
+| Sprint | `Shift` |
+| Armory | `B` |
+| Pause | `Esc` |
+| Sound | Sound Button |
+
+---
+
+# 🧠 THE GAME LOOP
 
 ```text
-        ┌─────────────┐
-        │  START RUN  │
-        └──────┬──────┘
-               ↓
-        ┌─────────────┐
-        │ ENTER YARD  │
-        └──────┬──────┘
-               ↓
-        ┌─────────────┐
-        │ FIGHT HORDE │
-        └──────┬──────┘
-               ↓
-        ┌─────────────┐
-        │ KILLS/DAMAGE│
-        └──────┬──────┘
-               ↓
-     ┌────────────────────┐
-     │ EARN KILLS +       │
-     │ SURVIVE            │
-     └─────────┬──────────┘
-               ↓
-        ┌─────────────┐
-        │   ARMORY    │
-        └──────┬──────┘
-               ↓
-        ┌─────────────┐
-        │   UPGRADE   │
-        └──────┬──────┘
-               ↓
-        ┌─────────────┐
-        │ 60 SECONDS  │
-        └──────┬──────┘
-               ↓
-        ┌─────────────┐
-        │    WIN      │
-        └─────────────┘
+             ┌──────────────┐
+             │   START RUN  │
+             └───────┬──────┘
+                     ↓
+             ┌──────────────┐
+             │ ENTER THE    │
+             │    YARD      │
+             └───────┬──────┘
+                     ↓
+             ┌──────────────┐
+             │ FIGHT HORDE  │
+             └───────┬──────┘
+                     ↓
+          ┌──────────────────────┐
+          │  KILLS + SURVIVAL    │
+          └──────────┬───────────┘
+                     ↓
+             ┌──────────────┐
+             │   UNLOCK     │
+             │   WEAPONS    │
+             └───────┬──────┘
+                     ↓
+             ┌──────────────┐
+             │ 60 SECONDS?  │
+             └───────┬──────┘
+                     ↓
+              ┌────────────┐
+              │   SURVIVE  │
+              └────────────┘
