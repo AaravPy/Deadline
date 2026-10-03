@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Last 60 Seconds: survive a stylized first-person zombie rush in a one-minute arcade shooter.">
+  <title>LAST 60 SECONDS — Survive the horde</title>
+  <link rel="stylesheet" href="style.css?shop=6">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <main class="app">
+    <header class="masthead">
+      <a class="wordmark" href="#" aria-label="Last 60 Seconds home"><span class="mark-box">60<span>!</span></span><span class="mark-caption">LAST<br>SECONDS</span></a>
+      <p class="edition-stamp">A ONE MINUTE GAME<br><span>EDITION 001&nbsp; / &nbsp;2026</span></p>
+      <div class="career-counter" aria-label="Lifetime kills"><span>LIFETIME KILLS <b id="lifetime-kills">0</b></span></div>
+      <div class="top-actions">
+        <button class="icon-button" id="sound-toggle" type="button" aria-label="Mute sound" title="Toggle sound">♫ <span>SOUND ON</span></button>
+        <button class="icon-button" id="shop-button" type="button" title="Shop (B)">▣ <span>SHOP</span></button>
+        <button class="icon-button" id="pause-button" type="button" aria-label="Pause game" title="Pause (Escape)" hidden>Ⅱ <span>PAUSE</span></button>
+      </div>
+    </header>
+    <section class="game-shell" aria-label="Last 60 Seconds game">
+      <div class="hud" id="hud" hidden>
+        <div class="hud-side"><span class="hud-label">HEALTH</span><div class="health-row" id="health" role="meter" aria-label="Health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="timer-wrap"><span class="timer-label">TIME LEFT</span><div class="timer" id="timer">60.0</div></div>
+        <div class="hud-side hud-right"><span class="hud-label">AMMO &nbsp;·&nbsp; RUN KILLS</span><span class="ammo" id="ammo">12 <small>/ 48</small></span><span class="kills" id="kills">0 KILLS</span></div>
+      </div>
+      <div class="arena-frame" id="arena-frame">
+        <canvas id="arena" aria-label="First-person 3D zombie survival arena. WASD to move, mouse to aim, left click to fire, R to reload, Shift to sprint, Escape to pause." tabindex="0"></canvas>
+        <div class="reticle" id="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+        <div class="hit-marker" id="hit-marker" aria-hidden="true">×</div>
+        <div class="arena-topline"><span id="phase-name">WARM-UP</span><span id="weapon-status">ARCADE SIDEARM&nbsp; / &nbsp;READY</span></div>
+        <div class="arena-bottomline"><span id="event-copy">KEEP MOVING</span><span class="desktop-hint">WASD MOVE <b>·</b> MOUSE AIM <b>·</b> CLICK FIRE <b>·</b> R RELOAD <b>·</b> SHIFT SPRINT</span><span class="mobile-hint">DESKTOP CONTROLS</span></div>
+        <div class="overlay" id="overlay">
+          <section class="screen screen-menu" data-screen="menu">
+            <p class="eyebrow"><span class="live-dot"></span> A GAME ABOUT NOT GETTING EATEN</p>
+            <h1>LAST<br><span>60</span> SECONDS<span class="period">.</span></h1>
+            <p class="tagline">Survive the horde.</p>
+            <button class="primary-button" data-action="start">ENTER THE YARD <span>→</span></button>
+            <p class="controls-note"><kbd>W A S D</kbd> MOVE &nbsp; <kbd>MOUSE</kbd> AIM &nbsp; <kbd>CLICK</kbd> FIRE &nbsp; <kbd>R</kbd> RELOAD<br><kbd>SHIFT</kbd> SPRINT &nbsp; <kbd>B</kbd> SHOP &nbsp; <kbd>ESC</kbd> PAUSE</p>
+          </section>
+          <section class="screen screen-pause" data-screen="pause" hidden>
+            <p class="eyebrow">THE YARD CAN WAIT</p><h2>PAUSED<span class="period">.</span></h2>
+            <div class="screen-actions"><button class="primary-button" data-action="resume">BACK IN <span>→</span></button><button class="text-button" data-action="open-shop">WEAPON SHOP</button><button class="text-button" data-action="restart">START OVER</button><button class="text-button" data-action="menu">LEAVE THE YARD</button></div>
+          </section>
+          <section class="screen screen-shop" data-screen="shop" hidden>
+            <p class="eyebrow">THE YARD ARMORY</p><h2>BUY SOME TIME<span class="period">.</span></h2>
+            <p class="shop-balance"><span>KILL BANK <b id="shop-balance">0</b></span><span>LIFETIME <b id="shop-lifetime">0</b></span></p>
+            <div class="shop-items" id="shop-items"></div>
+            <div class="screen-actions"><button class="primary-button" data-action="close-shop">BACK TO THE YARD <span>→</span></button></div>
+          </section>
+          <section class="screen screen-result" data-screen="result" hidden>
+            <p class="eyebrow" id="result-eyebrow">RUN ENDED</p><h2 id="result-title">GAME OVER<span class="period">.</span></h2>
+            <p class="result-reason" id="result-reason">The horde got through.</p>
+            <div class="result-stats"><div><span>TIME</span><b id="result-time">00.0</b></div><div><span>KILLS</span><b id="result-kills">0</b></div><div><span>SCORE</span><b id="result-score">0</b></div><div><span>BEST</span><b id="result-best">00.0</b></div></div>
+            <p class="result-extra" id="result-extra"></p>
+            <div class="screen-actions"><button class="primary-button" data-action="restart">PLAY AGAIN <span>→</span></button><button class="text-button" data-action="menu">MAIN MENU</button></div>
+          </section>
+          <div class="toast" id="toast" aria-live="polite"></div>
+          <p class="boot-error" id="boot-error" role="alert" hidden></p>
+        </div>
+        <div class="lock-message" id="lock-message" hidden>MOUSE LOOK ACTIVE <span>ESC TO RELEASE</span></div>
+        <div class="damage-vignette" id="damage-vignette"></div>
+      </div>
+      <footer class="game-footer"><span>KEEP THEM OFF YOU.</span><span>ONE MAG. ONE MINUTE.</span></footer>
+    </section>
+  </main>
+  <script type="module" src="js/main.js?shop=6"></script>
+</body>
+</html>
